@@ -1,7 +1,24 @@
+'use client';
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/testing')
+      .then(response => {
+        console.log("🚀 ~ file: page.tsx:13 ~ useEffect ~ response:", response)
+      })
+      .then(data => {
+        console.log("🚀 ~ file: page.tsx:16 ~ useEffect ~ data:", data)
+        return 
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+  
   return (
     <main className={styles.main}>
       <div className={styles.description}>
