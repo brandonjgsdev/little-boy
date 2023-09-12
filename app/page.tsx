@@ -8,12 +8,10 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/testing')
-      .then(response => {
-        console.log("🚀 ~ file: page.tsx:13 ~ useEffect ~ response:", response)
-      })
-      .then(data => {
-        console.log("🚀 ~ file: page.tsx:16 ~ useEffect ~ data:", data)
+    fetch('https://ax-trinity-74dc1013d9c2.herokuapp.com/api/testing')
+      .then(response => response.json())
+      .then(message => {
+        console.log("🚀 ~ file: page.tsx:16 ~ useEffect ~ data:", message)
         return 
       })
       .catch(error => console.error('Error fetching data:', error));
